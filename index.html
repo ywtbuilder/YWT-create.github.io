@@ -8,319 +8,197 @@
   <script src="main.js" defer></script>
 </head>
 <body>
-
-  <!-- ══════════════════════════════════════
-       A. HEADER
-  ══════════════════════════════════════ -->
-  <header class="header">
+  <header class="hero">
     <div class="page">
-      <span class="header__eyebrow">Yang Wentong · Portfolio Index</span>
-      <div class="header__body">
-        <h1 class="header__title">杨文通&thinsp;·&thinsp;项目作品集导航</h1>
-        <p class="header__subtitle">后端 / Java &nbsp;&middot;&nbsp; 面试演示入口（按推荐顺序）</p>
+      <div class="hero__inner">
+        <p class="hero__eyebrow">YANG WENTONG · PORTFOLIO INDEX</p>
+        <h1 class="hero__title">杨文通 · 项目作品集导航</h1>
+        <p class="hero__subtitle">后端 / Java / 分布式系统 · 面试展示入口</p>
         <div class="hero__actions">
           <a
-            class="cta"
+            class="btn btn--primary"
             href="https://github.com/ywtbuilder/ywtbuilder-profile"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="打开简历总入口（新标签页）"
           >简历总入口</a>
-          <a
-            class="cta cta--secondary"
-            href="#projects"
-            aria-label="跳转到项目列表"
-          >查看项目列表</a>
+          <a class="btn btn--ghost" href="#projects">查看项目列表</a>
         </div>
       </div>
     </div>
   </header>
 
-
-  <!-- ══════════════════════════════════════
-       B. PROJECT LIST
-  ══════════════════════════════════════ -->
-  <main class="projects" id="projects">
+  <main id="projects" class="projects">
     <div class="page">
+      <section class="section-head" aria-label="项目概览">
+        <p class="section-head__eyebrow">PROJECT SHELF · 6 REPOSITORIES</p>
+        <h2 class="section-head__title">工程化项目矩阵</h2>
+        <p class="section-head__desc">按面试演示顺序排列。先看链路完整度，再看指标与工程决策。</p>
+      </section>
 
-      <div class="projects__meta" aria-hidden="true">
-        <span class="projects__label">Projects</span>
-        <span class="projects__rule"></span>
-        <span class="projects__count">6 repos</span>
-      </div>
-
-      <ol class="project-list" aria-label="项目列表">
-
-        <!-- ── 01 NexusMall ── -->
+      <ol class="project-grid" aria-label="项目列表">
         <li class="card">
-          <span class="card__index" aria-hidden="true">01</span>
-
-          <h2 class="card__name">
-            NexusMall 好物星球
-            <span class="card__slug">nexusmall-ecommerce</span>
-          </h2>
-
-          <p class="card__tagline">
-            企业级全栈电商系统，7 大业务域完整实现；双端 BFF 分层 + Vue 3 Monorepo，53 条淘宝真实 SKU 离线全量可演示。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+          <span class="card__badge">电商后端</span>
+          <h3 class="card__title">
+            NexusMall（好物星球）
+            <span class="card__slug">ywtbuilder-nexusmall-ecommerce</span>
+          </h3>
+          <p class="card__one-liner">全栈电商闭环，双端 BFF 分层落地。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>首页接口 P95 = 52ms</li>
+            <li>ES 降级可用率 100%</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
             <span class="stack-tag">Spring Boot 3</span>
             <span class="stack-tag">Vue 3</span>
-            <span class="stack-tag">TypeScript</span>
             <span class="stack-tag">Redis</span>
             <span class="stack-tag">Elasticsearch</span>
             <span class="stack-tag">RabbitMQ</span>
-            <span class="stack-tag">MySQL</span>
-            <span class="stack-tag">Docker</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>双端 BFF 拆分（<code>mall-app-api</code> / <code>mall-admin-api</code>），领域模块复用；首页 API P95&nbsp;=&nbsp;52&thinsp;ms（Spring Cache + 响应体精简 72%），生产模式首屏可交互 P95&nbsp;=&nbsp;139.7&thinsp;ms。</li>
-            <li>Elasticsearch 全文检索，ES 节点不可用时自动降级 MySQL LIKE 零感知切换；搜索接口 P95&nbsp;=&nbsp;6.1&thinsp;ms；JWT + RBAC 动态权限，管理端 16 个视图完整覆盖。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-nexusmall-ecommerce"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 NexusMall 仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
 
-
-        <!-- ── 02 12306 ── -->
         <li class="card">
-          <span class="card__index" aria-hidden="true">02</span>
-
-          <h2 class="card__name">
+          <span class="card__badge">交易系统</span>
+          <h3 class="card__title">
             12306 购票系统
-            <span class="card__slug">railway-ticket-system</span>
-          </h2>
-
-          <p class="card__tagline">
-            零外部中间件依赖的全链路购票系统，查票→下单→支付→订单状态机全程闭环，面试现场 30&thinsp;s 冷启动即可演示。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+            <span class="card__slug">ywtbuilder-railway-ticket-system</span>
+          </h3>
+          <p class="card__one-liner">零中间件依赖，购票交易链路可复现。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>冷启动约 30 秒可演示</li>
+            <li>连续 20 次下单全成功</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
             <span class="stack-tag">Spring Boot 3</span>
-            <span class="stack-tag">MyBatis-Plus</span>
-            <span class="stack-tag">H2 内嵌</span>
             <span class="stack-tag">Vue 3</span>
-            <span class="stack-tag">Vite 5</span>
+            <span class="stack-tag">H2</span>
             <span class="stack-tag">JWT</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>H2 内嵌替代 MySQL，去除全部外部中间件；<code>startup.bat</code> 一键冷启动约 30&thinsp;s，查票接口单机响应 &lt;&nbsp;120&thinsp;ms。</li>
-            <li>座位锁定 + 行程区间幂等校验保障下单唯一性；连续 20 次下单成功率 100%，订单→支付状态机完整流转可演示。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-railway-ticket-system"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 12306 购票系统仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
 
-
-        <!-- ── 03 TeaVision ── -->
         <li class="card">
-          <span class="card__index" aria-hidden="true">03</span>
-
-          <h2 class="card__name">
+          <span class="card__badge">CV 工程化</span>
+          <h3 class="card__title">
             TeaVision 茶叶检测
-            <span class="card__slug">teavision-yolo-detection</span>
-          </h2>
-
-          <p class="card__tagline">
-            将 YOLOv11 四类改进方案工程化为可量化对比的茶叶目标检测平台，15 个模型统一托管，结果存档可回溯。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+            <span class="card__slug">ywtbuilder-teavision-yolo-detection</span>
+          </h3>
+          <p class="card__one-liner">多模型对比平台，训练与推理一体化。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>15 组模型统一托管</li>
+            <li>单图推理耗时小于 1 秒</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
-            <span class="stack-tag">Python</span>
             <span class="stack-tag">FastAPI</span>
             <span class="stack-tag">YOLOv11</span>
-            <span class="stack-tag">Vanilla JS</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">SQLite</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>四类改进方案（TBD 三分支注意力、BiFormer 双向路由注意力、多尺度特征融合、SPD-CARAFE 轻量上采样），方案 A·L 相对基线 mAP@0.5 提升约 5%。</li>
-            <li>15 个方案模型（5 改进方案 × 3 规模）统一托管；单图推理 &lt;&nbsp;1&thinsp;s（GPU），服务连续调用 100 次无 5xx，结果文件落盘可回溯。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-teavision-yolo-detection"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 TeaVision 茶叶检测仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
 
-
-        <!-- ── 04 RISC-V ── -->
         <li class="card">
-          <span class="card__index" aria-hidden="true">04</span>
-
-          <h2 class="card__name">
+          <span class="card__badge">体系结构</span>
+          <h3 class="card__title">
             RISC-V 流水线 CPU
-            <span class="card__slug">riscv-pipeline-cpu</span>
-          </h2>
-
-          <p class="card__tagline">
-            支持 RV32IM 的 Verilog 三级流水线 CPU，从 RTL 设计到行为仿真验证全程完整，体现底层硬件抽象能力。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+            <span class="card__slug">ywtbuilder-riscv-pipeline-cpu</span>
+          </h3>
+          <p class="card__one-liner">三级流水线 RTL，实现冒险处理闭环。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>官方测试 47 / 48 通过</li>
+            <li>RV32UI + RV32UM 可验证</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
             <span class="stack-tag">Verilog</span>
-            <span class="stack-tag">Vivado 2023.2</span>
+            <span class="stack-tag">Vivado</span>
             <span class="stack-tag">RV32IM</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>三级流水线（IF&rarr;ID&rarr;EX）：数据冒险（RAW）引入 Stall 暂停检测单元，控制冒险引入跳转地址重定向，两类冒险各有专用硬件处理路径，波形可直接验证。</li>
-            <li>官方测试集 47/48 通过（97.9%），覆盖 RV32UI 全量 39 条 + RV32UM 乘除法 8 条，x27/x28/x29/x30 寄存器写回结果逐条比对。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-riscv-pipeline-cpu"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 RISC-V 流水线 CPU 仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
 
-
-        <!-- ── 05 IPC ── -->
         <li class="card">
-          <span class="card__index" aria-hidden="true">05</span>
-
-          <h2 class="card__name">
+          <span class="card__badge">系统编程</span>
+          <h3 class="card__title">
             IPC 四机制
-            <span class="card__slug">windows-ipc-demo</span>
-          </h2>
-
-          <p class="card__tagline">
-            Win32 四种进程间通信机制横向对比演示，Socket / 共享内存 / 命名管道 / 邮件槽在同一框架内切换，行为差异一屏可见。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+            <span class="card__slug">ywtbuilder-windows-ipc-demo</span>
+          </h3>
+          <p class="card__one-liner">Win32 四机制同框对比，边界行为可见。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>四机制 Debug|x64 全可运行</li>
+            <li>异常输入可稳定返回菜单</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
             <span class="stack-tag">C++17</span>
             <span class="stack-tag">Win32 API</span>
             <span class="stack-tag">Winsock2</span>
-            <span class="stack-tag">MSVC x64</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>四种机制统一封装进 <code>comm.lib</code> 静态库，同一套 Sender/Receiver 二进制交互菜单，可在同一会话内切换机制发送同一条消息，实现差异横向对比。</li>
-            <li>共享内存引入命名事件 + 互斥量消除写竞态；命名管道单独处理 <code>ERROR_PIPE_CONNECTED</code> 边界；邮件槽设置超时避免无限阻塞。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-windows-ipc-demo"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 IPC 四机制仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
 
-
-        <!-- ── 06 Chatroom ── -->
         <li class="card">
-          <span class="card__index" aria-hidden="true">06</span>
-
-          <h2 class="card__name">
+          <span class="card__badge">网络并发</span>
+          <h3 class="card__title">
             Java TCP 聊天室
-            <span class="card__slug">chatroom-java-tcp</span>
-          </h2>
-
-          <p class="card__tagline">
-            基于 Java TCP Socket 的局域网多人聊天室，完整展示每连接一线程并发模型与 Swing GUI 线程安全更新。
-          </p>
-
-          <span class="card__rule" aria-hidden="true"></span>
-
+            <span class="card__slug">ywtbuilder-chatroom-java-tcp</span>
+          </h3>
+          <p class="card__one-liner">每连接一线程模型，广播链路清晰可讲。</p>
+          <ul class="card__metrics" aria-label="关键结果">
+            <li>三客户端并发广播延迟小于 10ms</li>
+            <li>EDT 安全更新路径已固化</li>
+          </ul>
           <div class="card__stack" aria-label="技术栈">
-            <span class="stack-tag">Java 8+</span>
+            <span class="stack-tag">Java</span>
             <span class="stack-tag">TCP Socket</span>
-            <span class="stack-tag">ServerSocket</span>
             <span class="stack-tag">Swing</span>
           </div>
-
-          <ul class="card__highlights" aria-label="技术亮点">
-            <li>每连接独立线程，服务端集中广播分发；本机三路并发消息广播延迟均 &lt;&nbsp;10&thinsp;ms，"连接建立→广播分发→UI 刷新"全链路路径清晰可追踪。</li>
-            <li>关键 UI 更新路径统一通过 <code>SwingUtilities.invokeLater</code> 调度至 EDT，保证无竞态刷新；客户端断开/重连期间其余连接保持稳定。</li>
-          </ul>
-
           <a
             class="card__link"
             href="https://github.com/ywtbuilder/ywtbuilder-chatroom-java-tcp"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="查看 Java TCP 聊天室仓库（新标签页）"
-          >
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 012 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            查看仓库
-          </a>
+          >查看仓库</a>
         </li>
-
       </ol>
     </div>
   </main>
 
-
-  <!-- ══════════════════════════════════════
-       C. FOOTER
-  ══════════════════════════════════════ -->
   <footer class="footer">
-    <div class="page">
-      <p class="footer__line">Last update: 2026-02-28</p>
-      <p class="footer__line">&copy;&thinsp;Yang Wentong</p>
+    <div class="page footer__inner">
+      <p>LAST UPDATE · 2026-02-28</p>
+      <p>BUILT FOR INTERVIEW-FIRST STORYTELLING</p>
     </div>
   </footer>
-
 </body>
 </html>
