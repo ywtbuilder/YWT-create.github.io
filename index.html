@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>杨文通 · 项目作品集导航</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-soft: #ecfeff;
+      --border: #d1d5db;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top right, #dff8f4, var(--bg) 50%);
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    a.tile {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 12px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    a.tile:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .tile h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+    .tile span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .resume {
+      margin-top: 18px;
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid #99f6e4;
+      font-weight: 600;
+    }
+    .foot {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>杨文通 · 项目作品集导航</h1>
+      <p>后端/Java 求职展示入口。以下仓库按面试演示优先级排列，建议从 NexusMall 开始。</p>
+
+      <div class="grid">
+        <a class="tile" href="https://github.com/YWT-create/nexusmall-ecommerce" target="_blank" rel="noopener noreferrer">
+          <h3>NexusMall（好物星球）</h3>
+          <span>Spring Boot 3 / Vue 3 / Redis / ES / MQ</span>
+        </a>
+        <a class="tile" href="https://github.com/YWT-create/railway-ticket-system" target="_blank" rel="noopener noreferrer">
+          <h3>12306 购票系统</h3>
+          <span>单体交易闭环演示，零中间件快速复现</span>
+        </a>
+        <a class="tile" href="https://github.com/YWT-create/teavision-yolo-detection" target="_blank" rel="noopener noreferrer">
+          <h3>TeaVision 茶叶检测</h3>
+          <span>FastAPI / YOLO / 实验对比工程化</span>
+        </a>
+        <a class="tile" href="https://github.com/YWT-create/riscv-pipeline-cpu" target="_blank" rel="noopener noreferrer">
+          <h3>RISC-V 流水线 CPU</h3>
+          <span>Verilog RTL + 仿真验证</span>
+        </a>
+        <a class="tile" href="https://github.com/YWT-create/windows-ipc-demo" target="_blank" rel="noopener noreferrer">
+          <h3>IPC 四机制</h3>
+          <span>C++ / Win32 / 命名管道与共享内存</span>
+        </a>
+        <a class="tile" href="https://github.com/YWT-create/chatroom-java-tcp" target="_blank" rel="noopener noreferrer">
+          <h3>Java TCP 聊天室</h3>
+          <span>Socket 并发连接与消息广播</span>
+        </a>
+      </div>
+
+      <a class="resume" href="https://github.com/YWT-create/YWT-create" target="_blank" rel="noopener noreferrer">
+        简历入口与个人介绍
+      </a>
+
+      <div class="foot">Last update: 2026-02-28</div>
+    </section>
+  </main>
+</body>
+</html>
