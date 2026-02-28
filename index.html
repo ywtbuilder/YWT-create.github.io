@@ -4,130 +4,668 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>杨文通 · 项目作品集导航</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f5f7fb;
-      --panel: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #0f766e;
-      --accent-soft: #ecfeff;
-      --border: #d1d5db;
+      --bg: #ede5dc;
+      --bg-deep: #e1d5c7;
+      --panel: #fffaf4;
+      --panel-strong: #f8f0e7;
+      --text: #1f1a17;
+      --muted: #62564b;
+      --line: #ccb9a8;
+      --accent: #8f4d33;
+      --accent-strong: #77341e;
+      --accent-soft: #f0ded2;
+      --olive: #59614d;
+      --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+      --shadow-2: 0 12px 24px rgba(76, 52, 33, 0.08);
+      --shadow-3: 0 28px 54px rgba(56, 36, 21, 0.14);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
       color: var(--text);
-      background: radial-gradient(circle at top right, #dff8f4, var(--bg) 50%);
+      font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 9% 8%, #f6ebde 0%, transparent 35%),
+        radial-gradient(circle at 84% 10%, #ebdfd1 0%, transparent 42%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 100%);
+      position: relative;
     }
-    .wrap {
-      max-width: 900px;
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(70, 53, 40, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(70, 53, 40, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, black 24%, transparent 80%);
+      opacity: 0.22;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(120, 94, 70, 0.08) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      mix-blend-mode: multiply;
+      opacity: 0.14;
+    }
+
+    .container {
+      width: min(1180px, 100% - 40px);
       margin: 0 auto;
-      padding: 28px 18px 40px;
+      padding: 36px 0 56px;
+      position: relative;
+      z-index: 1;
     }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-    }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      line-height: 1.2;
-    }
-    p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      margin-top: 14px;
+      margin-bottom: 18px;
     }
-    a.tile {
-      display: block;
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
       color: var(--text);
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 12px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 244, 0.72);
+      backdrop-filter: blur(3px);
+      font-size: 13px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
-    a.tile:hover {
-      border-color: var(--accent);
+
+    .top-link:hover {
       transform: translateY(-1px);
+      border-color: var(--accent);
     }
-    .tile h3 {
-      margin: 0 0 6px;
-      font-size: 16px;
+
+    .layout {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
     }
-    .tile span {
+
+    .span-4 {
+      grid-column: span 4;
+    }
+
+    .span-5 {
+      grid-column: span 5;
+    }
+
+    .span-7 {
+      grid-column: span 7;
+    }
+
+    .span-8 {
+      grid-column: span 8;
+    }
+
+    .span-12 {
+      grid-column: span 12;
+    }
+
+    .panel {
+      background: linear-gradient(160deg, rgba(255, 252, 247, 0.96), rgba(246, 237, 229, 0.96));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow-1), var(--shadow-2), var(--shadow-3);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      top: -28%;
+      right: -24%;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(207, 166, 136, 0.28), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--olive);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 12px 0 14px;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-copy {
+      max-width: 60ch;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 10px 16px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #fff8f4;
+      background: linear-gradient(140deg, var(--accent) 0%, var(--accent-strong) 100%);
+      box-shadow:
+        0 10px 18px rgba(117, 58, 33, 0.26),
+        0 2px 0 rgba(255, 255, 255, 0.28) inset;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 14px 24px rgba(117, 58, 33, 0.3),
+        0 2px 0 rgba(255, 255, 255, 0.34) inset;
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 244, 0.7);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: #f8ede4;
+    }
+
+    .photo-card {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .photo-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #d9c8b8;
+      box-shadow:
+        0 8px 18px rgba(62, 42, 26, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.04);
+    }
+
+    .photo-note {
       font-size: 13px;
       color: var(--muted);
     }
-    .resume {
-      margin-top: 18px;
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid #99f6e4;
-      font-weight: 600;
+
+    .section-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .foot {
-      margin-top: 14px;
-      font-size: 12px;
+
+    h2 {
+      margin: 0;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: clamp(24px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .section-sub {
       color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .c-span-6 {
+      grid-column: span 6;
+    }
+
+    .c-span-4 {
+      grid-column: span 4;
+    }
+
+    .project-card {
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #d8c6b5;
+      border-radius: 18px;
+      padding: 16px 16px 14px;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(246, 236, 226, 0.75)),
+        var(--panel);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 10px 20px rgba(81, 56, 39, 0.08);
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: #b99578;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.95) inset,
+        0 14px 30px rgba(81, 56, 39, 0.16),
+        0 0 0 1px rgba(145, 91, 62, 0.12);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.36) 50%, transparent 67%);
+      transform: translateX(-120%);
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover::before {
+      transform: translateX(120%);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b412b;
+      background: #f3e2d7;
+      border: 1px solid #d8bda8;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+
+    .project-title svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      color: var(--accent);
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .facts {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 6px;
+      color: #3f352e;
+      font-size: 13px;
+    }
+
+    .facts li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .facts li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #b56e4e;
+      box-shadow: 0 0 0 3px rgba(181, 110, 78, 0.2);
+      flex: 0 0 auto;
+    }
+
+    .note-block p {
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .note-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .note-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 250, 244, 0.7);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .note-links a:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .showcase-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #d9c8b8;
+      margin-bottom: 12px;
+      box-shadow:
+        0 10px 22px rgba(72, 49, 31, 0.17),
+        0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    }
+
+    .showcase-image img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88) contrast(1.06);
+    }
+
+    .showcase-caption {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .foot {
+      margin-top: 18px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise-in 0.85s cubic-bezier(0.2, 0.75, 0.26, 1) forwards;
+      animation-delay: var(--d, 0s);
+    }
+
+    @keyframes rise-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .span-4,
+      .span-5,
+      .span-7,
+      .span-8 {
+        grid-column: span 12;
+      }
+
+      .c-span-6,
+      .c-span-4 {
+        grid-column: span 12;
+      }
+
+      .photo-card {
+        min-height: auto;
+      }
+
+      .photo-wrap img {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: calc(100% - 24px);
+        padding: 26px 0 40px;
+      }
+
+      .panel {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .project-title {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>杨文通 · 项目作品集导航</h1>
-      <p>后端/Java 求职展示入口。以下仓库按面试演示优先级排列，建议从 NexusMall 开始。</p>
-
-      <div class="grid">
-        <a class="tile" href="https://github.com/YWT-create/nexusmall-ecommerce" target="_blank" rel="noopener noreferrer">
-          <h3>NexusMall（好物星球）</h3>
-          <span>Spring Boot 3 / Vue 3 / Redis / ES / MQ</span>
-        </a>
-        <a class="tile" href="https://github.com/YWT-create/railway-ticket-system" target="_blank" rel="noopener noreferrer">
-          <h3>12306 购票系统</h3>
-          <span>单体交易闭环演示，零中间件快速复现</span>
-        </a>
-        <a class="tile" href="https://github.com/YWT-create/teavision-yolo-detection" target="_blank" rel="noopener noreferrer">
-          <h3>TeaVision 茶叶检测</h3>
-          <span>FastAPI / YOLO / 实验对比工程化</span>
-        </a>
-        <a class="tile" href="https://github.com/YWT-create/riscv-pipeline-cpu" target="_blank" rel="noopener noreferrer">
-          <h3>RISC-V 流水线 CPU</h3>
-          <span>Verilog RTL + 仿真验证</span>
-        </a>
-        <a class="tile" href="https://github.com/YWT-create/windows-ipc-demo" target="_blank" rel="noopener noreferrer">
-          <h3>IPC 四机制</h3>
-          <span>C++ / Win32 / 命名管道与共享内存</span>
-        </a>
-        <a class="tile" href="https://github.com/YWT-create/chatroom-java-tcp" target="_blank" rel="noopener noreferrer">
-          <h3>Java TCP 聊天室</h3>
-          <span>Socket 并发连接与消息广播</span>
-        </a>
-      </div>
-
-      <a class="resume" href="https://github.com/YWT-create/YWT-create" target="_blank" rel="noopener noreferrer">
-        简历入口与个人介绍
+  <main class="container">
+    <header class="topbar" data-reveal style="--d: 0.02s;">
+      <div class="brand">Yang Wentong · Portfolio Index</div>
+      <a class="top-link" href="https://github.com/ywtbuilder/YWT-create" target="_blank" rel="noopener noreferrer">
+        进入简历总览仓库
       </a>
+    </header>
 
-      <div class="foot">Last update: 2026-02-28</div>
+    <section class="layout">
+      <article class="panel span-8" data-reveal style="--d: 0.08s;">
+        <p class="eyebrow">Backend Engineering / Java / Distributed Systems</p>
+        <h1>杨文通 · 项目作品集导航</h1>
+        <p class="hero-copy">
+          这不是简单的仓库列表，而是一条可讲清楚“问题、方案、结果、取舍”的面试动线。建议演示顺序：
+          NexusMall → 12306 购票 → TeaVision；其余项目用于补充系统基础与工程深度。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/ywtbuilder/YWT-create" target="_blank" rel="noopener noreferrer">查看简历总入口</a>
+          <a class="btn btn-ghost" href="https://github.com/ywtbuilder/YWT-create/blob/main/docs/interview-playbook.md" target="_blank" rel="noopener noreferrer">查看面试讲解脚本</a>
+        </div>
+      </article>
+
+      <aside class="panel photo-card span-4" data-reveal style="--d: 0.14s;">
+        <div class="photo-wrap">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="工程师工作台与代码编辑环境" loading="lazy" />
+        </div>
+        <p class="photo-note">
+          面试时先讲系统设计，再给可复现证据，最后讲性能与边界处理。这个顺序更容易建立可信度。
+        </p>
+      </aside>
+
+      <article class="panel span-12" data-reveal style="--d: 0.2s;">
+        <div class="section-title">
+          <h2>Project Shelf</h2>
+          <span class="section-sub">6 repositories / curated for interview storytelling</span>
+        </div>
+
+        <div class="bento">
+          <a class="project-card c-span-6" href="https://github.com/ywtbuilder/nexusmall-ecommerce" target="_blank" rel="noopener noreferrer">
+            <div class="tag">旗舰项目</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h10l3 5-8 11L4 9l3-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              NexusMall（好物星球）
+            </h3>
+            <p class="project-desc">企业级全栈电商：把商品、搜索、订单、缓存、异步链路组织成可演示的完整交易闭环。</p>
+            <ul class="facts">
+              <li>Spring Boot 3 + Vue 3 + Redis + Elasticsearch + MQ</li>
+              <li>覆盖降级策略、热点缓存、异步削峰与证据链展示</li>
+            </ul>
+          </a>
+
+          <a class="project-card c-span-6" href="https://github.com/ywtbuilder/railway-ticket-system" target="_blank" rel="noopener noreferrer">
+            <div class="tag">交易闭环</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11.5C4 7.36 7.36 4 11.5 4h1C16.64 4 20 7.36 20 11.5v5.5h-2.5L16 20h-8l-1.5-3H4v-5.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 8h8M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              12306 购票系统
+            </h3>
+            <p class="project-desc">强调购票链路可复现：少依赖、快启动、清晰还原并发购票下的业务边界。</p>
+            <ul class="facts">
+              <li>Spring Boot 3 / Vue 3 / JWT / H2</li>
+              <li>适合现场演示核心流程与异常回退策略</li>
+            </ul>
+          </a>
+
+          <a class="project-card c-span-4" href="https://github.com/ywtbuilder/teavision-yolo-detection" target="_blank" rel="noopener noreferrer">
+            <div class="tag">CV 工程化</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><path d="m20 15-4.5-4.5L8 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              TeaVision 茶叶检测
+            </h3>
+            <p class="project-desc">FastAPI + YOLO 的实验管理与推理服务化实践。</p>
+          </a>
+
+          <a class="project-card c-span-4" href="https://github.com/ywtbuilder/riscv-pipeline-cpu" target="_blank" rel="noopener noreferrer">
+            <div class="tag">体系结构</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 8v8M12 8v8M16 8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              RISC-V 流水线 CPU
+            </h3>
+            <p class="project-desc">Verilog RTL 实现与仿真验证，体现底层硬件抽象能力。</p>
+          </a>
+
+          <a class="project-card c-span-4" href="https://github.com/ywtbuilder/windows-ipc-demo" target="_blank" rel="noopener noreferrer">
+            <div class="tag">系统编程</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              IPC 四机制
+            </h3>
+            <p class="project-desc">Win32 / C++ 下的命名管道、共享内存等机制对比演示。</p>
+          </a>
+
+          <a class="project-card c-span-6" href="https://github.com/ywtbuilder/chatroom-java-tcp" target="_blank" rel="noopener noreferrer">
+            <div class="tag">网络并发</div>
+            <h3 class="project-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6h14v9H8l-3 3V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10h6M9 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Java TCP 聊天室
+            </h3>
+            <p class="project-desc">Socket 并发连接与广播机制，适合补充基础网络能力表达。</p>
+          </a>
+
+          <article class="project-card c-span-6 note-block">
+            <div class="tag">投递建议</div>
+            <p>简历中只放一个总入口链接，面试现场按“业务闭环 -> 工程化 -> 底层能力”推进，叙事会更完整。</p>
+            <div class="note-links">
+              <a href="https://github.com/ywtbuilder/YWT-create" target="_blank" rel="noopener noreferrer">GitHub Profile README</a>
+              <a href="https://github.com/ywtbuilder/YWT-create/blob/main/docs/showcase/README.md" target="_blank" rel="noopener noreferrer">Showcase 证据规范</a>
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <article class="panel span-7" data-reveal style="--d: 0.26s;">
+        <div class="section-title">
+          <h2>Why This Layout</h2>
+        </div>
+        <p>
+          首页采用不对称 Bento 结构，目的是把“重点项目”与“辅助证明项目”分层展示。你可以在 30 秒内让面试官看懂优先级，避免把 6 个项目讲成同等权重。
+        </p>
+        <div class="note-links" style="margin-top: 14px;">
+          <a href="https://ywtbuilder.github.io/YWT-create.github.io/index.html" target="_blank" rel="noopener noreferrer">访问当前首页</a>
+          <a href="https://github.com/ywtbuilder/YWT-create.github.io/blob/main/index.html" target="_blank" rel="noopener noreferrer">查看页面源码</a>
+        </div>
+      </article>
+
+      <aside class="panel span-5" data-reveal style="--d: 0.32s;">
+        <div class="showcase-image">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="软件开发场景与演示素材拍摄参考" loading="lazy" />
+        </div>
+        <p class="showcase-caption">
+          这里可替换为你自己的演示截图或录屏封面。建议每个核心项目至少准备 1 张架构图和 1 段关键路径录屏。
+        </p>
+      </aside>
     </section>
+
+    <footer class="foot" data-reveal style="--d: 0.38s;">
+      Last update: 2026-02-28 · Built for interview-first storytelling
+    </footer>
   </main>
 </body>
 </html>
+
